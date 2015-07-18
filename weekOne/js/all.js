@@ -4,6 +4,7 @@ var myApp = angular.module('myApp', []);
     /* function 名稱小寫開頭會出錯 */
     var MyController = function($scope, $http) {
         $scope.pins = [];
+        $scope.select = true;
         $http.jsonp(api + '?callback=JSON_CALLBACK').success(function(data) {
             $scope.pins = data.data.pins;
         }).error(function(data, status, headers, config) {

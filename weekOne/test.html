@@ -128,7 +128,7 @@
 <body ng-controller="MyController">
     <div class="mdl-layout">
         <!-- card mod -->
-        <div class="hide" ng-class="mdClass">
+        <div class="" ng-show="select">
         <div ng-repeat="pin in pins" class="mdl-shadow--2dp pins">
           <div class="mdl-card__title">
             <img ng-src="{{pin.images['237x'].url}}" alt="" width="100%">
@@ -145,7 +145,7 @@
         </div>
         </div>
         <!-- list mode -->
-        <div class="hide" ng-class="lsClass">
+        <div class="" ng-show="!select">
         <section ng-repeat="pin in pins" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
               <img ng-src="{{pin.images['237x'].url}}" width="100%" alt="">
@@ -163,11 +163,11 @@
           </div>
         <!-- Colored FAB button -->
         <div class="show-case">
-            <button ng-click="mdClass='show';lsClass=''" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored maB1x">
+            <button ng-click="select=true" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x">
               <i class="material-icons">view_module</i>
             </button>
             <br>
-            <button ng-click="lsClass='show';mdClass=''" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--accent">
+            <button ng-click="select=false" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
               <i class="material-icons">view_list</i>
             </button>
         </div>
