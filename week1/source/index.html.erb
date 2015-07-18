@@ -7,4 +7,7 @@ title: Welcome to Middleman
   <p class="doc">
     <%= link_to "Read Online Documentation", "http://middlemanapp.com/" %>
   </p><!-- .doc -->
+  <pre ng-repeat="pin in pins">
+  <img ng-src="{{pin.images['237x'].url}}" alt="">
+  </pre>
 </div><!-- .welcome -->

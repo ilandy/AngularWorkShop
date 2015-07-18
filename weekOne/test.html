@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/all.js"></script>
+    <style>
+    body{
+        height: 100vw;
+        /*padding-bottom: 30px;*/
+    }
+      .mdl-layout {
+         max-width:782px;
+         height: auto;
+         margin:20px auto; 
+         position:relative;
+         overflow: inherit;
+         padding-bottom: 30px;
+      }
+      .mdl-card__title {
+        color: #fff;
+        background: bottom right 15% no-repeat #46B6AC;
+        padding: 0;
+        max-height: 500px;
+        overflow: hidden;
+      }
+      .pins {
+        position: absolute;
+        width: 250px;
+      }
+      .show-case {
+        position: fixed;
+        right: 15vw;
+        bottom: 3vh;
+        width: 56px;
+        z-index: 999;
+      }
+      .section__play-btn {
+        overflow: hidden;
+        max-height: 250px;
+      }
+      .section--center {
+        margin-bottom: 16px;
+        position: relative;
+
+      }
+      .mdl-demo .mdl-layout__content section:not(:last-of-type) {
+          position: relative;
+          margin-bottom: 48px;
+        }
+        section button {
+          position: absolute;
+          z-index: 99;
+          top: 8px;
+          right: 8px;
+        }
+        .maB1x {
+            margin-bottom: 8px;
+
+        }
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+    </style>
+    <script language="javascript">
+        window.onload=function(){
+            var ali = document.getElementsByClassName('pins');
+            var aHeight={L:[],C:[],R:[]};
+            for(var i = 0;i<ali.length;i++){
+                var iNow=i%3;
+                switch(iNow){
+                    case 0:
+                        ali[i].style.left='0px';
+                        aHeight.L.push(ali[i].offsetHeight);
+                        var step=Math.floor(i/3);
+                        if(!step){
+                            ali[i].style.top=0;
+                        }else{
+                            var sum=0;
+                            for(var j=0;j<step;j++){
+                                sum+=aHeight.L[j]+16;
+                            }   
+                            ali[i].style.top=sum+'px';
+                        }
+                        break;
+                    case 1:
+                        ali[i].style.left='266px';
+                        aHeight.C.push(ali[i].offsetHeight);
+                        var step=Math.floor(i/3);
+                        if(!step){
+                            ali[i].style.top=0;
+                        }else{
+                            var sum=0;
+                            for(var j=0;j<step;j++){
+                                sum+=aHeight.C[j]+16;
+                            }   
+                            ali[i].style.top=sum+'px';
+                        }
+                        break;
+                    case 2:
+                        ali[i].style.left='532px';
+                        aHeight.R.push(ali[i].offsetHeight);
+                        var step=Math.floor(i/3);
+                        if(!step){
+                            ali[i].style.top=0;
+                        }else{
+                            var sum=0;
+                            for(var j=0;j<step;j++){
+                                sum+=aHeight.R[j]+16;
+                            }   
+                            ali[i].style.top=sum+'px';
+                        }
+                        break;
+                }
+            }
+        }
+</script>
+</head>
+
+<body ng-controller="MyController">
+    <div class="mdl-layout">
+        <!-- card mod -->
+        <div class="hide" ng-class="mdClass">
+        <div ng-repeat="pin in pins" class="mdl-shadow--2dp pins">
+          <div class="mdl-card__title">
+            <img ng-src="{{pin.images['237x'].url}}" alt="" width="100%">
+          </div>
+          <div class="mdl-card__supporting-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenan convallis.
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              View Updates
+            </a>
+          </div>
+        </div>
+        </div>
+        <!-- list mode -->
+        <div class="hide" ng-class="lsClass">
+        <section ng-repeat="pin in pins" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+              <img ng-src="{{pin.images['237x'].url}}" width="100%" alt="">
+            </header>
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+              <div class="mdl-card__supporting-text">
+                <h4>Features</h4>
+                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse.
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">Read our features</a>
+              </div>
+            </div>
+          </section>
+          </div>
+        <!-- Colored FAB button -->
+        <div class="show-case">
+            <button ng-click="mdClass='show';lsClass=''" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored maB1x">
+              <i class="material-icons">view_module</i>
+            </button>
+            <br>
+            <button ng-click="lsClass='show';mdClass=''" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--accent">
+              <i class="material-icons">view_list</i>
+            </button>
+        </div>
+    </div>
+    
+</body>
+
+</html>
