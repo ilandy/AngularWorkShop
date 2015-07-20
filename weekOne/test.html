@@ -195,11 +195,11 @@
         </div>
         <!-- Colored FAB button -->
         <div class="show-case">
-            <button ng-click="select=true" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x mdl-color--pink-100" ng-class="{'mdl-color--pink-500':select==true}">
+            <button ng-click="select=true" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x mdl-color--pink-100" ng-class="{'mdl-color--pink-500':select}">
               <i class="material-icons">view_module</i>
             </button>
             <br>
-            <button ng-click="select=false" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--pink-100" ng-Class="{'mdl-color--pink-500':select==false}">
+            <button ng-click="select=false" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--pink-100" ng-Class="{'mdl-color--pink-500' :!select}">
               <i class="material-icons">view_list</i>
             </button>
         </div>
