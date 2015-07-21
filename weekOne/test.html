@@ -5,10 +5,20 @@
     <meta charset="utf-8">
     <title>JS Bin</title>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+
+  	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+    <script src="http://passy.github.io/angular-masonry/bower_components/imagesloaded/imagesloaded.js"></script>
+
+   
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="http://passy.github.io/angular-masonry/angular-masonry.js"></script>  
     <script src="js/all.js"></script>
+    
     <style>
     body{
         height: 100vw;
@@ -101,67 +111,17 @@
         .show{
             display: block;
         }
-    </style>
-    <script language="javascript">
-        window.onload=function(){
-            var ali = document.getElementsByClassName('pins');
-            var aHeight={L:[],C:[],R:[]};
-            for(var i = 0;i<ali.length;i++){
-                var iNow=i%3;
-                switch(iNow){
-                    case 0:
-                        ali[i].style.left='0px';
-                        aHeight.L.push(ali[i].offsetHeight);
-                        var step=Math.floor(i/3);
-                        if(!step){
-                            ali[i].style.top=0;
-                        }else{
-                            var sum=0;
-                            for(var j=0;j<step;j++){
-                                sum+=aHeight.L[j]+16;
-                            }   
-                            ali[i].style.top=sum+'px';
-                        }
-                        break;
-                    case 1:
-                        ali[i].style.left='266px';
-                        aHeight.C.push(ali[i].offsetHeight);
-                        var step=Math.floor(i/3);
-                        if(!step){
-                            ali[i].style.top=0;
-                        }else{
-                            var sum=0;
-                            for(var j=0;j<step;j++){
-                                sum+=aHeight.C[j]+16;
-                            }   
-                            ali[i].style.top=sum+'px';
-                        }
-                        break;
-                    case 2:
-                        ali[i].style.left='532px';
-                        aHeight.R.push(ali[i].offsetHeight);
-                        var step=Math.floor(i/3);
-                        if(!step){
-                            ali[i].style.top=0;
-                        }else{
-                            var sum=0;
-                            for(var j=0;j<step;j++){
-                                sum+=aHeight.R[j]+16;
-                            }   
-                            ali[i].style.top=sum+'px';
-                        }
-                        break;
-                }
-            }
+        .grid{
+          max-width: 100%;
         }
-</script>
+    </style>
 </head>
 
 <body ng-controller="MyController">
     <div class="mdl-layout">
         <!-- card mod -->
-        <div class="" ng-show="select">
-        <div ng-repeat="pin in pins" class="mdl-shadow--2dp pins mdl-color--white">
+        <div masory ng-show="select" column-width="200">
+        <div class="mdl-shadow--2dp pins mdl-color--white masonry-brick" ng-repeat="pin in pins" >
           <div class="mdl-card__title">
             <img ng-src="{{pin.images['237x'].url}}" alt="" width="100%">
           </div>
@@ -204,7 +164,61 @@
             </button>
         </div>
     </div>
+    <script language="javascript">
     
+        // window.onload=function(){
+        //     var ali = document.getElementsByClassName('pins');
+        //     var aHeight={L:[],C:[],R:[]};
+        //     for(var i = 0;i<ali.length;i++){
+        //         var iNow=i%3;
+        //         switch(iNow){
+        //             case 0:
+        //                 ali[i].style.left='0px';
+        //                 aHeight.L.push(ali[i].offsetHeight);
+        //                 var step=Math.floor(i/3);
+        //                 if(!step){
+        //                     ali[i].style.top=0;
+        //                 }else{
+        //                     var sum=0;
+        //                     for(var j=0;j<step;j++){
+        //                         sum+=aHeight.L[j]+16;
+        //                     }   
+        //                     ali[i].style.top=sum+'px';
+        //                 }
+        //                 break;
+        //             case 1:
+        //                 ali[i].style.left='266px';
+        //                 aHeight.C.push(ali[i].offsetHeight);
+        //                 var step=Math.floor(i/3);
+        //                 if(!step){
+        //                     ali[i].style.top=0;
+        //                 }else{
+        //                     var sum=0;
+        //                     for(var j=0;j<step;j++){
+        //                         sum+=aHeight.C[j]+16;
+        //                     }   
+        //                     ali[i].style.top=sum+'px';
+        //                 }
+        //                 break;
+        //             case 2:
+        //                 ali[i].style.left='532px';
+        //                 aHeight.R.push(ali[i].offsetHeight);
+        //                 var step=Math.floor(i/3);
+        //                 if(!step){
+        //                     ali[i].style.top=0;
+        //                 }else{
+        //                     var sum=0;
+        //                     for(var j=0;j<step;j++){
+        //                         sum+=aHeight.R[j]+16;
+        //                     }   
+        //                     ali[i].style.top=sum+'px';
+        //                 }
+        //                 break;
+        //         }
+        //     }
+        // }
+  </script>
+  
 </body>
 
 </html>

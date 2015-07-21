@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['wu.masonry']);
     var api = 'https://api.pinterest.com/v3/pidgets/boards/ilandychiu/海報dm設計/pins/';
 
     /* function 名稱小寫開頭會出錯 */
