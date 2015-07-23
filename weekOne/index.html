@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>JS Bin</title>
+    <title>AngularJS work shop - ilandy</title>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
 
   	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -177,11 +177,15 @@
         </div>
         <!-- Colored FAB button -->
         <div class="show-case">
-            <button ng-click="select=true" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x mdl-color--pink-100" ng-class="{'mdl-color--pink-500':select}">
+            <a href="https://github.com/ilandy/AngularWorkShop/tree/master/weekOne" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x mdl-color--pink-500">
+              <i class="material-icons">file_download</i>
+            </a>
+            <br>
+            <button ng-click="select=true" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--pink-100" ng-class="{'mdl-color--pink-500':!select}">
               <i class="material-icons">view_module</i>
             </button>
             <br>
-            <button ng-click="select=false" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--pink-100" ng-Class="{'mdl-color--pink-500' :!select}">
+            <button ng-click="select=false" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--pink-100" ng-Class="{'mdl-color--pink-500' :select}">
               <i class="material-icons">view_list</i>
             </button>
         </div>
