@@ -11,4 +11,4 @@ Description
   * $http 接 pinterest 的資料
   * 開始使用 angular directives
  
-[成果Demo](ilandy.azurewebsites.net/angularJS/weekOne "Week1")
+[成果Demo](http://ilandy.azurewebsites.net/angularJS/weekOne "Week1")
