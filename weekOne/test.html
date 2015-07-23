@@ -64,6 +64,7 @@
          overflow: inherit;
          padding-bottom: 30px;
       }
+
       .mdl-card__title {
         color: #fff;
         background: bottom right 15% no-repeat #46B6AC;
@@ -78,8 +79,8 @@
       }
       .show-case {
         position: fixed;
-        right: 17vw;
-        bottom: 3vh;
+        right: 5vw;
+        top: 20px;
         width: 56px;
         z-index: 999;
       }
@@ -115,6 +116,26 @@
         .grid{
           max-width: 100%;
         }
+        @media screen and (min-width: 768px) and (max-width: 979px){
+        .mdl-layout {
+          width: 516px;
+          padding: 0 20px;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+        }
+
+      }
+       @media screen and (max-width: 480px){
+        .mdl-layout {
+          width: 250px;
+          padding: 0 20px;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+        }
+
+      }
     </style>
 </head>
 
