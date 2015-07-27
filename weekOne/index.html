@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS work shop - ilandy</title>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+
+  	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.1/masonry.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="http://passy.github.io/angular-masonry/angular-masonry.js"></script>  
+    <script src="js/all.js"></script>
+    
+    <style>
+    body{
+        height: 100vw;
+        /*padding-bottom: 30px;*/
+    }
+    body:after {
+      content: "";
+      background-image: url(http://media-cache-ec0.pinimg.com/237x/52/1b/07/521b0762a7324c73604dbfb81b057e93.jpg);
+      -webkit-background-size: 100% auto;
+      background-size: 100% auto;
+      z-index: -2;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+    }
+    body:before {
+      content: "";
+      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+      background-size: 100%;
+      background-image: -moz-radial-gradient(#000 1px, rgba(0,0,0,0.3) 1.5px);
+      background-image: -webkit-radial-gradient(#000 1px, rgba(0,0,0,0.3) 1.5px);
+      background-image: radial-gradient(#000000 1px,rgba(0,0,0,0.3) 1.5px);
+      -webkit-transition: 1s;
+      -o-transition: 1s;
+      transition: 1s;
+      background-size: 10px 10px;
+      background-position: center center;
+      position: fixed;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+      .mdl-layout {
+         max-width:782px;
+         height: auto;
+         margin:20px auto; 
+         position:relative;
+         overflow: inherit;
+         padding-bottom: 30px;
+      }
+
+      .mdl-card__title {
+        color: #fff;
+        background: bottom right 15% no-repeat #46B6AC;
+        padding: 0;
+        max-height: 500px;
+        overflow: hidden;
+      }
+      .pins {
+        position: absolute;
+        width: 250px;
+        margin-bottom: 16px;
+      }
+      .show-case {
+        position: fixed;
+        right: 5vw;
+        top: 20px;
+        width: 56px;
+        z-index: 999;
+      }
+      .section__play-btn {
+        overflow: hidden;
+        max-height: 250px;
+      }
+      .section--center {
+        margin-bottom: 16px;
+        position: relative;
+
+      }
+      .mdl-demo .mdl-layout__content section:not(:last-of-type) {
+          position: relative;
+          margin-bottom: 48px;
+        }
+        section button {
+          position: absolute;
+          z-index: 99;
+          top: 8px;
+          right: 8px;
+        }
+        .maB1x {
+            margin-bottom: 8px;
+
+        }
+        .hide{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+        .grid{
+          max-width: 100%;
+        }
+        @media screen and (min-width: 768px) and (max-width: 979px){
+        .mdl-layout {
+          width: 516px;
+          padding: 0 20px;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+        }
+
+      }
+       @media screen and (max-width: 480px){
+        .mdl-layout {
+          width: 250px;
+          padding: 0 20px;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+        }
+
+      }
+    </style>
+</head>
+
+<body ng-controller="MyController">
+    <div class="mdl-layout">
+        <!-- card mod -->
+        <div masonry ng-show="select" masonry-options="{ transitionDuration: '0.4s',gutter: 16 }">
+        <div class="mdl-shadow--2dp pins mdl-color--white masonry-brick" ng-repeat="pin in pins" >
+          <div class="mdl-card__title">
+            <img ng-src="{{pin.images['237x'].url}}" alt="" width="100%">
+          </div>
+          <div class="mdl-card__supporting-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenan convallis.
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              View Updates
+            </a>
+          </div>
+        </div>
+        </div>
+        <!-- list mode -->
+        <div class="" ng-show="!select">
+          <section ng-repeat="pin in pins" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp mdl-color--white">
+            <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+              <img ng-src="{{pin.images['237x'].url}}" width="100%" alt="">
+            </header>
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+              <div class="mdl-card__supporting-text">
+                <h4>Features</h4>
+                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse.
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">Read our features</a>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Colored FAB button -->
+        <div class="show-case">
+            <a href="https://github.com/ilandy/AngularWorkShop/tree/master/weekOne" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x mdl-color--pink-500">
+              <i class="material-icons">file_download</i>
+            </a>
+            <br>
+            <button ng-click="select=true" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--pink-100" ng-class="{'mdl-color--pink-500':!select}">
+              <i class="material-icons">view_module</i>
+            </button>
+            <br>
+            <button ng-click="select=false" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--pink-100" ng-Class="{'mdl-color--pink-500' :select}">
+              <i class="material-icons">view_list</i>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
