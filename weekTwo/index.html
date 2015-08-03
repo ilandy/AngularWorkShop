@@ -1,0 +1,227 @@
+<!DOCTYPE html >
+<html lang="en" ng-app="orderApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.4/sortable.js"></script>
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/all.js"></script>
+    <style>
+    	.maT2x {
+    		margin-top: 32px;
+    	}
+    	.maB1x {
+			margin-bottom: 16px;
+    	}
+    	.maBBase {
+			margin-bottom: 5px;
+    	}
+    	.bg-wrap {
+    		position: fixed;
+    		top: -5px;
+    		left: -5px;
+    		filter: blur(5px);
+    		-webkit-filter: blur(5px);
+    		width: 100vw;
+    		height: 100vh;
+    		z-index: -1;
+    	}
+    	.bg-item {
+    		display: inline-block;
+    		width: 20%;
+    		height: 250px;
+    		overflow: hidden;
+    		margin-top: -5px;
+    		background-position: center;
+    		-webkit-background-size: 100% auto;
+    		background-size: 100% auto;
+    	}
+		.order-form {
+			width: 100%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			padding: 16px;
+		}
+		.mdl-card__title {
+			height: 200px;
+			color: #fff;
+		}
+		.mdl-card__title-text {
+			margin: 16px;
+		}
+		.small-w {width: 150px;}
+		.large-w {width: 100%; }
+		.set-tag { padding: 3px 5px; margin: 0 5px 5px 0; border-radius: 2px; display: inline-block;}
+    </style>
+</head>
+<body ng-controller="OrderCtrl">
+	<div class="bg-wrap">
+		<div class="bg-item" ng-repeat="bg in pins | limitTo:30" style="background-image: url({{bg.images['237x'].url}});">
+		</div>
+	</div>
+	<div class="maT2x">
+		<div class="order-wrap mdl-grid">
+			<header class="mdl-card mdl-cell mdl-cell--3-col-desktop mdl-color--pink-500 mdl-color-text--white">
+              <h2 class="mdl-card__title-text">Welcome! CINIMAX</h2>
+            </header>
+            <div class="mdl-card mdl-cell mdl-cell--9-col">
+              <div class="mdl-card__supporting-text">
+              	<div class="mdl-card__menu"><button class="mdl-button mdl-button--fab mdl-button--mini-fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" ng-click="addOrder()" id="new"><i class="material-icons">add</i></button>
+              	<div class="mdl-tooltip" for="new">
+				Add new !
+				</div>
+              	</div>
+
+				<form class="order-form" action="#">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					   <input class="mdl-textfield__input" type="text" id="name" ng-model="newName" name="newName"/>
+					   <label class="mdl-textfield__label" for="name">Name</label>
+					</div>
+					&nbsp;
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					   <input class="mdl-textfield__input" type="phone" id="sample4" ng-model="newPhone" name="newPhone"/>
+					   <label class="mdl-textfield__label" for="phone">Phone</label>
+					 </div>
+					 &nbsp;
+					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
+					   <input class="mdl-textfield__input" type="text" id="price" ng-model="newPrice" name="newPrice"/>
+					   <label class="mdl-textfield__label" for="price">Price</label>
+					 </div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
+					   <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number" ng-model="newNumber" name="newNumber"/>
+					   <label class="mdl-textfield__label" for="number">Number</label>
+					   <span class="mdl-textfield__error">Input is not a number!</span>
+					 </div>
+					 &nbsp;
+					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+					   <input class="mdl-textfield__input" type="text" id="Set" ng-model="newPlace" name="newPlace"/>
+					   <label class="mdl-textfield__label" for="Set">Set</label>
+					 </div>
+					 &nbsp;
+					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					   <input class="mdl-textfield__input" type="text" id="time" ng-model="newTime" name="newTime"/>
+					   <label class="mdl-textfield__label" for="time">Time</label>
+					 </div>
+					 
+					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label large-w">
+					   <input class="mdl-textfield__input" type="mail" id="mail" ng-model="newMail" name="newMail"/>
+					   <label class="mdl-textfield__label" for="mail">E-Mail</label>
+					 </div>
+				</form>
+				</div>
+			</div>
+		</div>
+		<div class="order-wrap mdl-grid ">	
+			<table class="mdl-cell mdl-cell--12-col mdl-card">
+				<thead>
+					<tr class="mdl-grid">
+						<td class="mdl-cell--1-col"></td>
+						
+						<td class="mdl-cell--1-col">訂票金額 
+						</td>
+
+						<td class="mdl-cell--1-col">訂票人 
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-name' || sortType != 'name'" ng-click="sortType='name'"><i class="material-icons">arrow_drop_down</i></button>
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == 'name'" ng-click="sortType='-name'"><i class="material-icons">arrow_drop_up</i></button>
+						</td>
+
+						<td class="mdl-cell--1-col">人數 
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-number' || sortType != 'number'" ng-click="sortType='number'"><i class="material-icons">arrow_drop_down</i></button>
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='number'" ng-click="sortType='-number'"><i class="material-icons">arrow_drop_up</i></button>
+						</td>
+
+						<td class="mdl-cell--2-col">位置 
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='place'" ng-show="sortType == '' ||  sortType == '-place' || sortType != 'place'"><i class="material-icons">arrow_drop_down</i></button>
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='place'" ng-click="sortType='-place'"><i class="material-icons">arrow_drop_up</i></button>
+						</td>
+
+						<td class="mdl-cell--2-col">訂票時間 
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='time'" ng-show="sortType == '' ||  sortType == '-time' || sortType != 'time'"><i class="material-icons">arrow_drop_down</i>
+						</button>
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='time'" ng-click="sortType='-time'"><i class="material-icons">arrow_drop_up</i></button>
+						</td>
+
+						<td class="mdl-cell--2-col">電話 
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='phone'" ng-show="sortType == '' ||  sortType == '-phone' || sortType != 'phone'"><i class="material-icons">arrow_drop_down</i></button>
+						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='phone'" ng-click="sortType='-phone'"><i class="material-icons">arrow_drop_up</i></button>
+						</td>
+
+						<td class="mdl-cell--2-col">E-Mail 
+							<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='mail'" ng-show="sortType == '' ||  sortType == '-mail' || sortType != 'mail'"><i class="material-icons">arrow_drop_down</i></button>
+							<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='mail'" ng-click="sortType='-mail'"><i class="material-icons">arrow_drop_up</i></button>
+						</td>
+					</tr>
+				</thead>
+				<tbody ui-sortable ng-model="orders">
+					<tr class="mdl-grid mdl-card--border mdl-card__actions" ng-repeat="order in orders | orderBy:sortType">
+						<td class="mdl-cell--1-col" align="center">
+							<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="delOrder($index)"ng-show="!edit" type="button" id="delete-{{order.name}}"><i class="material-icons">delete</i>
+							</button>
+							<div class="mdl-tooltip" for="delete-{{order.name}}">
+							Delete
+							</div>
+							<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="edit=!edit" ng-show="!edit" type="button" id="edit-{{order.name}}"><i class="material-icons">edit_mode</i></button>
+							<div class="mdl-tooltip" for="edit-{{order.name}}">
+							Edit
+							</div>
+							<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="edit=false;editOrder($index)" ng-show="edit" id="done-{{order.name}}"><i class="material-icons">check</i>
+							</button>
+							<div class="mdl-tooltip" for="done-{{order.name}}">
+								Done
+							</div>
+						</td>
+
+						<td class="mdl-cell--1-col"><span>{{order.price*order.number | currency:"NT$":0 }}</span>
+						</td>
+
+						<td class="mdl-cell--1-col"><span ng-show="!edit">{{order.name}}</span>
+							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
+							    <input class="mdl-textfield__input" type="text" ng-model="order.name" name="" id="edname"/>
+							    <label class="mdl-textfield__label" for="edname">{{order.name}}</label>
+							</div>
+						</td>
+						<td class="mdl-cell--1-col"><span ng-show="!edit">{{order.number}}</span>
+							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
+							    <input class="mdl-textfield__input" type="text" ng-model="order.number" name="" id="ednumber"/>
+							    <label class="mdl-textfield__label" for="ednumber">{{order.number}}</label>
+							</div>
+						</td>
+						<td class="mdl-cell--2-col">
+							<span class="set-tag mdl-color--pink-500 mdl-color-text--white" ng-repeat="set in order.place" ng-show="!edit">{{ set }} </span>
+							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
+							    <input class="mdl-textfield__input" type="text" ng-model="order.place" name="" id="edplace"/>
+							    <label class="mdl-textfield__label" for="edplace">{{set}}</label>
+							</div>
+						</td>
+						
+						<td class="mdl-cell--2-col"><span ng-show="!edit">{{order.time | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
+							    <input class="mdl-textfield__input" type="text" ng-model="order.time" name="" id="edtime"/>
+							    <label class="mdl-textfield__label" for="edtime">{{order.time | date:'yyyy-MM-dd HH:mm:ss'}}</label>
+							</div>
+						</td>
+						<td class="mdl-cell--2-col"><span ng-show="!edit">{{order.phone}}</span>
+							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
+							    <input class="mdl-textfield__input" type="text" ng-model="order.phone" name="" id="edphone"/>
+							    <label class="mdl-textfield__label" for="edphone">{{order.phone}}</label>
+							</div>
+						</td>
+						<td class="mdl-cell--2-col"><span ng-show="!edit">{{order.mail}}</span>
+							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
+							    <input class="mdl-textfield__input" type="text" ng-model="order.mail" name="" id="edmail"/>
+							    <label class="mdl-textfield__label" for="edmail">{{order.mail}}</label>
+							</div>
+						</td>
+						</tr>
+							</tbody>	
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -6,7 +6,6 @@
     <title>AngularJS work shop - ilandy</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
-    
   	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
     
@@ -143,7 +142,11 @@
 <body ng-controller="MyController">
     <div class="mdl-layout">
         <!-- card mod -->
+<<<<<<< HEAD
         <div masonry ng-if="select" masonry-options="{ transitionDuration: '0.4s',gutter: 16 }">
+=======
+        <div masonry ng-show="select" masonry-options="{ transitionDuration: '0.4s',gutter: 16 }">
+>>>>>>> master
         <div class="mdl-shadow--2dp pins mdl-color--white masonry-brick" ng-repeat="pin in pins" >
           <div class="mdl-card__title">
             <img ng-src="{{pin.images['237x'].url}}" alt="" width="100%">
@@ -160,7 +163,11 @@
         </div>
         </div>
         <!-- list mode -->
+<<<<<<< HEAD
         <div class="" ng-if="!select">
+=======
+        <div class="" ng-show="!select">
+>>>>>>> master
           <section ng-repeat="pin in pins" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp mdl-color--white">
             <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
               <img ng-src="{{pin.images['237x'].url}}" width="100%" alt="">
