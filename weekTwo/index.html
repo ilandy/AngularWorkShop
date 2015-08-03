@@ -117,7 +117,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="order-wrap mdl-grid ">	
+		<div class="order-wrap mdl-grid">	
 			<table class="mdl-cell mdl-cell--12-col mdl-card">
 				<thead>
 					<tr class="mdl-grid">
@@ -127,8 +127,7 @@
 						</td>
 
 						<td class="mdl-cell--1-col">訂票人 
-						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-name' || sortType != 'name'" ng-click="sortType='name'"><i class="material-icons">arrow_drop_down</i></button>
-						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == 'name'" ng-click="sortType='-name'"><i class="material-icons">arrow_drop_up</i></button>
+							<sort-button data-sort-type="name"></sort-button>
 						</td>
 
 						<td class="mdl-cell--1-col">人數 
@@ -136,9 +135,8 @@
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='number'" ng-click="sortType='-number'"><i class="material-icons">arrow_drop_up</i></button>
 						</td>
 
-						<td class="mdl-cell--2-col">位置 
-						<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='place'" ng-show="sortType == '' ||  sortType == '-place' || sortType != 'place'"><i class="material-icons">arrow_drop_down</i></button>
-						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='place'" ng-click="sortType='-place'"><i class="material-icons">arrow_drop_up</i></button>
+						<td class="mdl-cell--2-col">位置
+							<sort-button data-sort-type="place"></sort-button>
 						</td>
 
 						<td class="mdl-cell--2-col">訂票時間 
@@ -177,7 +175,8 @@
 							</div>
 						</td>
 
-						<td class="mdl-cell--1-col"><span>{{order.price*order.number | currency:"NT$":0 }}</span>
+						<td class="mdl-cell--1-col"><span>{{order.price*order.number | currency:"NT$":0 }}
+						</span>
 						</td>
 
 						<td class="mdl-cell--1-col"><span ng-show="!edit">{{order.name}}</span>
