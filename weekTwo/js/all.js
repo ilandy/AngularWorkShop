@@ -10,7 +10,7 @@
 	E-Mail: mail
 * Description
 */
-var orderApp = angular.module('orderApp', []);
+var orderApp = angular.module('orderApp', ['ui.sortable']);
 var api = 'https://api.pinterest.com/v3/pidgets/boards/danielle_almond/Movies-2015/pins/';
 var OrderCtrl = function ($scope, $http) {
 	$scope.edit=false;
@@ -55,7 +55,7 @@ var OrderCtrl = function ($scope, $http) {
 		this.orders.push({
 			name:this.newName,
 			number: this.newNumber,
-			place: this.newPlace,
+			place: this.newPlace.split(','),
 			price: this.newPrice,
 			time: this.newTime,
 			phone: this.newPhone,
@@ -72,6 +72,11 @@ var OrderCtrl = function ($scope, $http) {
 	}
 	$scope.delOrder = function (index) {
 		this.orders.splice(this.orders.indexOf(index),1);
+	}
+	$scope.editOrder = function (index) {
+		var newPlace = $scope.orders[index].place;
+		$scope.orders[index].place = newPlace.split(',');
+		console.log()
 	}
 };
 OrderCtrl.$inject = ['$scope', '$http'];
