@@ -58,6 +58,13 @@
 		.small-w {width: 150px;}
 		.large-w {width: 100%; }
 		.set-tag { padding: 3px 5px; margin: 0 5px 5px 0; border-radius: 2px; display: inline-block;}
+		.show-case {
+	        position: fixed;
+	        right: 5vw;
+	        top: 20px;
+	        width: 56px;
+	        z-index: 999;
+	      }
     </style>
 </head>
 <body ng-controller="OrderCtrl">
@@ -218,10 +225,15 @@
 							    <label class="mdl-textfield__label" for="edmail">{{order.mail}}</label>
 							</div>
 						</td>
-						</tr>
-							</tbody>	
+					</tr>
+				</tbody>	
 			</table>
 		</div>
 	</div>
+	<div class="show-case">
+        <a href="https://github.com/ilandy/AngularWorkShop/tree/master/weekTwo" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x mdl-color--pink-500">
+          <i class="material-icons">file_download</i>
+        </a>
+    </div>
 </body>
 </html>
