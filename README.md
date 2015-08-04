@@ -31,3 +31,11 @@ Mission List
 example：<br>
   * <a href="https://jqueryui.com/draggable/#sortable" target="_blank">sortable</a> <br>
   * <a href="https://docs.angularjs.org/api/ng/service/$filter" target="_blank">$filter</a>
+
+Description
+&nbsp;&nbsp;可改進方向：
+  * 可將重複利用的 html 改寫成 Directive
+  * 使用 angular UI - sortable
+  * 欄位驗證
+
+<a href="http://ilandy.github.io/AngularWorkShop/weekTwo/" target="_blank">Week 2 - 成果Demo</a>
