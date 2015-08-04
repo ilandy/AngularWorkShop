@@ -58,13 +58,7 @@
 		.small-w {width: 150px;}
 		.large-w {width: 100%; }
 		.set-tag { padding: 3px 5px; margin: 0 5px 5px 0; border-radius: 2px; display: inline-block;}
-		.show-case {
-	        position: fixed;
-	        right: 5vw;
-	        top: 20px;
-	        width: 56px;
-	        z-index: 999;
-	      }
+		.download{ display: inline-block; padding: 3px 5px; border: 1px solid #fff; width: 150px; text-decoration: none; text-align: center;}
     </style>
 </head>
 <body ng-controller="OrderCtrl">
@@ -76,6 +70,11 @@
 		<div class="order-wrap mdl-grid">
 			<header class="mdl-card mdl-cell mdl-cell--3-col-desktop mdl-color--pink-500 mdl-color-text--white">
               <h2 class="mdl-card__title-text">Welcome! CINIMAX</h2>
+              <p align="right">
+               <a class="download mdl-color-text--white" href="https://github.com/ilandy/AngularWorkShop/tree/master/weekTwo" target="_blank">
+	          	&nbsp;<span>Github Download</span>
+			  </a>&nbsp;&nbsp;&nbsp;
+			  </p>
             </header>
             <div class="mdl-card mdl-cell mdl-cell--9-col">
               <div class="mdl-card__supporting-text">
@@ -230,10 +229,5 @@
 			</table>
 		</div>
 	</div>
-	<div class="show-case">
-        <a href="https://github.com/ilandy/AngularWorkShop/tree/master/weekTwo" target="_blank" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored maB1x mdl-color--pink-500">
-          <i class="material-icons">file_download</i>
-        </a>
-    </div>
 </body>
 </html>
