@@ -59,6 +59,30 @@
 		.large-w {width: 100%; }
 		.set-tag { padding: 3px 5px; margin: 0 5px 5px 0; border-radius: 2px; display: inline-block;}
 		.download{ display: inline-block; padding: 3px 5px; border: 1px solid #fff; width: 150px; text-decoration: none; text-align: center;}
+		.screen{width: 70%; line-height: 30px;background-color: #000; margin-bottom: 20px;color: #fff;}
+		.set-row{
+			text-align: center;
+		}
+		.set{
+			border-radius: 3px;
+			background-color: #ccc;
+			height: 30px;
+			line-height: 30px;
+			width: 30px;
+			display: inline-block;
+			margin: 5px;
+			color: #fff;
+			cursor: pointer;
+		}
+		.set:hover {
+			background-color: #F8BBD0;
+		}
+		.set.active{
+			background-color: #E91E63;
+		}
+		.set.block{
+			background-color: #880E4F;
+		}
     </style>
 </head>
 <body ng-controller="OrderCtrl">
@@ -94,31 +118,32 @@
 					   <input class="mdl-textfield__input" type="phone" id="sample4" ng-model="newPhone" name="newPhone"/>
 					   <label class="mdl-textfield__label" for="phone">Phone</label>
 					 </div>
-					 &nbsp;
-					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
-					   <input class="mdl-textfield__input" type="text" id="price" ng-model="newPrice" name="newPrice"/>
-					   <label class="mdl-textfield__label" for="price">Price</label>
-					 </div>
-					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
-					   <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number" ng-model="newNumber" name="newNumber"/>
-					   <label class="mdl-textfield__label" for="number">Number</label>
-					   <span class="mdl-textfield__error">Input is not a number!</span>
-					 </div>
-					 &nbsp;
-					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
-					   <input class="mdl-textfield__input" type="text" id="Set" ng-model="newPlace" name="newPlace"/>
-					   <label class="mdl-textfield__label" for="Set">Set</label>
-					 </div>
-					 &nbsp;
+
 					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 					   <input class="mdl-textfield__input" type="text" id="time" ng-model="newTime" name="newTime"/>
 					   <label class="mdl-textfield__label" for="time">Time</label>
 					 </div>
-					 
-					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label large-w">
-					   <input class="mdl-textfield__input" type="mail" id="mail" ng-model="newMail" name="newMail"/>
-					   <label class="mdl-textfield__label" for="mail">E-Mail</label>
+
+					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
+					   <input class="mdl-textfield__input" type="text" id="price" value="{{230*newNumber}}" name="newPrice"/>
+					   <label class="mdl-textfield__label" for="price">Price</label>
 					 </div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
+					   <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number" ng-model="newNumber" value="{{0}}" name="newNumber" />
+					   <label class="mdl-textfield__label" for="number">Number</label>
+					   <span class="mdl-textfield__error">Input is not a number!</span>
+					 </div>
+					 
+					 &nbsp;
+					 <div class="order-wrap mdl-grid ">
+						<div class="mdl-cell mdl-cell--12-col mdl-card" align="center">
+							<div class="screen">布&nbsp;&nbsp;&nbsp;&nbsp;幕</div>
+							<div class="set-row" ng-repeat="setSetting in setSetting">
+								<span class="set-title">{{setSetting.setTitle}} &nbsp;&nbsp;</span>
+								<div class="set" ng-repeat="set in setSetting.sets" data-set-number="" ng-click="getSetNumber(setSetting.setTitle,set)" ng-class="{'active':setSelect}">{{set}}</div>
+							</div>
+						</div>
+					</div>
 				</form>
 				</div>
 			</div>
@@ -129,7 +154,7 @@
 					<tr class="mdl-grid">
 						<td class="mdl-cell--1-col"></td>
 						
-						<td class="mdl-cell--1-col">訂票金額 
+						<td class="mdl-cell--2-col">訂票金額 
 						</td>
 
 						<td class="mdl-cell--1-col">訂票人 
@@ -142,7 +167,7 @@
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='number'" ng-click="sortType='-number'"><i class="material-icons">arrow_drop_up</i></button>
 						</td>
 
-						<td class="mdl-cell--2-col">位置 
+						<td class="mdl-cell--3-col">位置 
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='place'" ng-show="sortType == '' ||  sortType == '-place' || sortType != 'place'"><i class="material-icons">arrow_drop_down</i></button>
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='place'" ng-click="sortType='-place'"><i class="material-icons">arrow_drop_up</i></button>
 						</td>
@@ -158,10 +183,6 @@
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='phone'" ng-click="sortType='-phone'"><i class="material-icons">arrow_drop_up</i></button>
 						</td>
 
-						<td class="mdl-cell--2-col">E-Mail 
-							<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='mail'" ng-show="sortType == '' ||  sortType == '-mail' || sortType != 'mail'"><i class="material-icons">arrow_drop_down</i></button>
-							<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='mail'" ng-click="sortType='-mail'"><i class="material-icons">arrow_drop_up</i></button>
-						</td>
 					</tr>
 				</thead>
 				<tbody ui-sortable ng-model="orders">
@@ -183,7 +204,7 @@
 							</div>
 						</td>
 
-						<td class="mdl-cell--1-col"><span>{{order.price*order.number | currency:"NT$":0 }}</span>
+						<td class="mdl-cell--2-col"><span>{{230*order.number | currency:"NT$":0 }}</span>
 						</td>
 
 						<td class="mdl-cell--1-col"><span ng-show="!edit">{{order.name}}</span>
@@ -198,11 +219,11 @@
 							    <label class="mdl-textfield__label" for="ednumber">{{order.number}}</label>
 							</div>
 						</td>
-						<td class="mdl-cell--2-col">
-							<span class="set-tag mdl-color--pink-500 mdl-color-text--white" ng-repeat="set in order.place" ng-show="!edit">{{ set }} </span>
+						<td class="mdl-cell--3-col">
+							<span class="set-tag mdl-color--pink-500 mdl-color-text--white" ng-repeat="set in order.place" ng-show="!edit">{{ set.seatTitle + set.seat }} </span>
 							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
 							    <input class="mdl-textfield__input" type="text" ng-model="order.place" name="" id="edplace"/>
-							    <label class="mdl-textfield__label" for="edplace">{{set}}</label>
+							    <label class="mdl-textfield__label" for="edplace">{{set.seat}}</label>
 							</div>
 						</td>
 						
@@ -216,12 +237,6 @@
 							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
 							    <input class="mdl-textfield__input" type="text" ng-model="order.phone" name="" id="edphone"/>
 							    <label class="mdl-textfield__label" for="edphone">{{order.phone}}</label>
-							</div>
-						</td>
-						<td class="mdl-cell--2-col"><span ng-show="!edit">{{order.mail}}</span>
-							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
-							    <input class="mdl-textfield__input" type="text" ng-model="order.mail" name="" id="edmail"/>
-							    <label class="mdl-textfield__label" for="edmail">{{order.mail}}</label>
 							</div>
 						</td>
 					</tr>

@@ -13,8 +13,11 @@
 var orderApp = angular.module('orderApp', ['ui.sortable']);
 var api = 'https://api.pinterest.com/v3/pidgets/boards/danielle_almond/Movies-2015/pins/';
 var OrderCtrl = function ($scope, $http) {
-	$scope.edit=false;
-	$scope.sortType= "";
+	$scope.edit = false,
+	$scope.sortType = "",
+	$scope.setSelect = false,
+	$scope.setOrder = [],
+	$scope.newNumber = 0;
 
 	$http.jsonp(api + '?callback=JSON_CALLBACK').success(function(data) {
             $scope.pins = data.data.pins;
@@ -26,48 +29,76 @@ var OrderCtrl = function ($scope, $http) {
 			{
 				name:'Ilandy',
 				number: 2,
-				place: ["A-10","A-09"],
-				price: 230,
+				place: [
+					{
+						'seatTitle':"A",
+						'seat':10
+					},
+					{
+						'seatTitle':"A",
+						'seat':9
+					}
+					],
 				time: 1288323623006,
-				phone: '0936-603-933',
-				mail: 'w9874123@gmail.com'
+				phone: '0936-603-933'
 			},
 			{
 				name:'Hal',
 				number: 3,
-				place: ["B-10","B-09","B-08"],
-				price: 230,
+				place: [{'seatTitle':"B",'seat':10},{'seatTitle':"B",'seat':9},{'seatTitle':"B",'seat':8}],
 				time: 1288329623006,
-				phone: '0911-890-123',
-				mail: 'hal@gmail.com'
+				phone: '0911-890-123'
 			},
 			{
 				name:'Austin',
 				number: 5,
-				place: ["C-06","C-07","C-08","C-09","C-10"],
-				price: 230,
+				place: [{'seatTitle':"A",'seat':6},{'seatTitle':"A",'seat':7},{'seatTitle':"A",'seat':8},{'seatTitle':"A",'seat':9},{'seatTitle':"A",'seat':10}],
 				time: 1288323693006,
-				phone: '0919-185-854',
-				mail: 'rockonyu@gmail.com'
+				phone: '0919-185-854'
 			}
 		];
+	$scope.setSetting = [
+			{
+				setTitle:'A',
+				sets: [1,3,5,7,9,11,12,10,8,6,4,2]
+			},
+			{
+				setTitle:'B',
+				sets: [1,3,5,7,9,11,12,10,8,6,4,2]
+			},
+			{
+				setTitle:'C',
+				sets: [1,3,5,7,9,11,12,10,8,6,4,2]
+			},
+			{
+				setTitle:'D',
+				sets: [1,3,5,7,9,11,12,10,8,6,4,2]
+			}
+		]
+	$scope.getSetNumber = function (setTitle,set){
+		this.setSelect = !this.setSelect;
+		$scope.setOrder.push({ 
+			seatTitle : setTitle,
+			seat : set });
+
+		$scope.newNumber = $scope.setOrder.length;
+		if (set) {}
+		// prvSet = set
+
+	}
 	$scope.addOrder = function () {
-		this.orders.push({
-			name:this.newName,
-			number: this.newNumber,
-			place: this.newPlace.split(','),
-			price: this.newPrice,
-			time: this.newTime,
-			phone: this.newPhone,
-			mail: this.newMail
+		$scope.orders.push({
+			name:$scope.newName,
+			number: $scope.newNumber,
+			place: $scope.setOrder,
+			time: $scope.newTime,
+			phone: $scope.newPhone
 		});
 		this.newName,
 		this.newNumber,
 		this.newPlace,
-		this.newPrice,
 		this.newTime,
-		this.newPhone,
-		this.newMail = "";
+		this.newPhone = '';
 
 	}
 	$scope.delOrder = function (index) {
@@ -76,7 +107,7 @@ var OrderCtrl = function ($scope, $http) {
 	$scope.editOrder = function (index) {
 		var newPlace = $scope.orders[index].place;
 		$scope.orders[index].place = newPlace.split(',');
-		console.log()
+		// console.log()
 	}
 };
 OrderCtrl.$inject = ['$scope', '$http'];
