@@ -53,7 +53,7 @@ var OrderCtrl = function ($scope, $http) {
 			},
 			{
 				name:'Austin',
-				number: 5,
+				number: 4,
 				place: [{'seatTitle':"A",'seat':6},{'seatTitle':"A",'seat':7},{'seatTitle':"A",'seat':8},{'seatTitle':"A",'seat':9}],
 				time: 1288323693006,
 				phone: '0919-185-854'
@@ -96,9 +96,6 @@ var OrderCtrl = function ($scope, $http) {
 			});
 			$scope.newNumber = $scope.setOrder.length;
 		}
-		prvSet = $scope.setOrder[$scope.setOrder.length-2].seat
-		
-		console.log(($scope.setOrder[$scope.setOrder.length-2].seat-set)%4)
 
 	}
 	$scope.addOrder = function () {
@@ -120,6 +117,8 @@ var OrderCtrl = function ($scope, $http) {
 			this.newNumber =
 			this.newPlace =
 			this.newPhone = '';
+			$scope.setSelect = false;
+			$scope.setOrder = [];
 		};
 		
 
