@@ -17,7 +17,9 @@ var OrderCtrl = function ($scope, $http) {
 	$scope.sortType = "",
 	$scope.setSelect = false,
 	$scope.setOrder = [],
-	$scope.newNumber = 0;
+	$scope.newNumber = 0,
+	$scope.nowDate = new Date(),
+　	s = $scope.nowDate.getTime();　
 
 	$http.jsonp(api + '?callback=JSON_CALLBACK').success(function(data) {
             $scope.pins = data.data.pins;
@@ -36,7 +38,7 @@ var OrderCtrl = function ($scope, $http) {
 					},
 					{
 						'seatTitle':"A",
-						'seat':9
+						'seat':12
 					}
 					],
 				time: 1288323623006,
@@ -52,7 +54,7 @@ var OrderCtrl = function ($scope, $http) {
 			{
 				name:'Austin',
 				number: 5,
-				place: [{'seatTitle':"A",'seat':6},{'seatTitle':"A",'seat':7},{'seatTitle':"A",'seat':8},{'seatTitle':"A",'seat':9},{'seatTitle':"A",'seat':10}],
+				place: [{'seatTitle':"A",'seat':6},{'seatTitle':"A",'seat':7},{'seatTitle':"A",'seat':8},{'seatTitle':"A",'seat':9}],
 				time: 1288323693006,
 				phone: '0919-185-854'
 			}
@@ -76,29 +78,50 @@ var OrderCtrl = function ($scope, $http) {
 			}
 		]
 	$scope.getSetNumber = function (setTitle,set){
-		this.setSelect = !this.setSelect;
-		$scope.setOrder.push({ 
-			seatTitle : setTitle,
-			seat : set });
+		
+		
+		if ($scope.setOrder.length > 3) {
 
-		$scope.newNumber = $scope.setOrder.length;
-		if (set) {}
-		// prvSet = set
+			alert('每場最多能預訂 4 個位置');
+
+		} else {
+
+			// if (( - set)%4 == 0) {
+			// 	alert('請選擇連續座位');
+			// }
+			this.setSelect = !this.setSelect;
+			$scope.setOrder.push({ 
+				seatTitle : setTitle,
+				seat : set 
+			});
+			$scope.newNumber = $scope.setOrder.length;
+		}
+		prvSet = $scope.setOrder[$scope.setOrder.length-2].seat
+		
+		console.log(($scope.setOrder[$scope.setOrder.length-2].seat-set)%4)
 
 	}
 	$scope.addOrder = function () {
-		$scope.orders.push({
-			name:$scope.newName,
-			number: $scope.newNumber,
-			place: $scope.setOrder,
-			time: $scope.newTime,
-			phone: $scope.newPhone
-		});
-		this.newName,
-		this.newNumber,
-		this.newPlace,
-		this.newTime,
-		this.newPhone = '';
+		if(this.newName == ''){
+			alert('請填寫訂位大名');
+		} else if (this.newNumber == '') {
+			alert('請至少選擇一個位置');
+		} else if (this.newPhone == '') {
+			alert('請填寫定位電話');
+		} else {
+			$scope.orders.push({
+				name:$scope.newName,
+				number: $scope.newNumber,
+				place: $scope.setOrder,
+				time: s,
+				phone: $scope.newPhone
+			})
+			this.newName =
+			this.newNumber =
+			this.newPlace =
+			this.newPhone = '';
+		};
+		
 
 	}
 	$scope.delOrder = function (index) {

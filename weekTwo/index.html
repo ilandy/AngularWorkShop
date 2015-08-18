@@ -59,7 +59,7 @@
 		.large-w {width: 100%; }
 		.set-tag { padding: 3px 5px; margin: 0 5px 5px 0; border-radius: 2px; display: inline-block;}
 		.download{ display: inline-block; padding: 3px 5px; border: 1px solid #fff; width: 150px; text-decoration: none; text-align: center;}
-		.screen{width: 70%; line-height: 30px;background-color: #000; margin-bottom: 20px;color: #fff;}
+		.screen{width: 70%; line-height: 30px;background-color: #ccc; margin-bottom: 20px;color: #fff;}
 		.set-row{
 			text-align: center;
 		}
@@ -115,23 +115,18 @@
 					</div>
 					&nbsp;
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					   <input class="mdl-textfield__input" type="phone" id="sample4" ng-model="newPhone" name="newPhone"/>
+					   <input class="mdl-textfield__input" type="phone" id="sample4" ng-model="newPhone" name="newPhone" pattern="[0-9]{4}[-][0-9]{3}[-][0-9]{3}"/>
 					   <label class="mdl-textfield__label" for="phone">Phone</label>
-					 </div>
-
-					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					   <input class="mdl-textfield__input" type="text" id="time" ng-model="newTime" name="newTime"/>
-					   <label class="mdl-textfield__label" for="time">Time</label>
+					   <span class="mdl-textfield__error">請輸入正確的手機號碼 Ex: 0900-000-000</span>
 					 </div>
 
 					 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
-					   <input class="mdl-textfield__input" type="text" id="price" value="{{230*newNumber}}" name="newPrice"/>
+					   <input class="mdl-textfield__input" type="text" id="price" value="{{230*newNumber}}" name="newPrice" readonly/>
 					   <label class="mdl-textfield__label" for="price">Price</label>
 					 </div>
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label small-w">
-					   <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number" ng-model="newNumber" value="{{0}}" name="newNumber" />
+					   <input class="mdl-textfield__input" type="text" id="number" ng-model="newNumber" name="newNumber" ng-readonly="newNumber"/>
 					   <label class="mdl-textfield__label" for="number">Number</label>
-					   <span class="mdl-textfield__error">Input is not a number!</span>
 					 </div>
 					 
 					 &nbsp;
@@ -154,15 +149,15 @@
 					<tr class="mdl-grid">
 						<td class="mdl-cell--1-col"></td>
 						
-						<td class="mdl-cell--2-col">訂票金額 
+						<td class="mdl-cell--1-col">訂票金額 
 						</td>
 
-						<td class="mdl-cell--1-col">訂票人 
+						<td class="mdl-cell--2-col">訂票人 
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-name' || sortType != 'name'" ng-click="sortType='name'"><i class="material-icons">arrow_drop_down</i></button>
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == 'name'" ng-click="sortType='-name'"><i class="material-icons">arrow_drop_up</i></button>
 						</td>
 
-						<td class="mdl-cell--1-col">人數 
+						<td class="mdl-cell--1-col">數量
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-number' || sortType != 'number'" ng-click="sortType='number'"><i class="material-icons">arrow_drop_down</i></button>
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='number'" ng-click="sortType='-number'"><i class="material-icons">arrow_drop_up</i></button>
 						</td>
@@ -204,10 +199,10 @@
 							</div>
 						</td>
 
-						<td class="mdl-cell--2-col"><span>{{230*order.number | currency:"NT$":0 }}</span>
+						<td class="mdl-cell--1-col"><span>{{230*order.number | currency:"NT$":0 }}</span>
 						</td>
 
-						<td class="mdl-cell--1-col"><span ng-show="!edit">{{order.name}}</span>
+						<td class="mdl-cell--2-col"><span ng-show="!edit">{{order.name}}</span>
 							<div class="mdl-textfield mdl-js-textfield" ng-show="edit">
 							    <input class="mdl-textfield__input" type="text" ng-model="order.name" name="" id="edname"/>
 							    <label class="mdl-textfield__label" for="edname">{{order.name}}</label>
