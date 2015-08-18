@@ -120,8 +120,6 @@ var OrderCtrl = function ($scope, $http) {
 			this.newNumber =
 			this.newPlace =
 			this.newPhone = '';
-			$scope.orders = [];
-			$scope.setSelect = false;
 		};
 		
 
