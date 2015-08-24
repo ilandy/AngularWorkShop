@@ -1,0 +1,51 @@
+.wrap {
+	width: 50%;
+	margin: 0 auto;
+}
+.item {
+	width: 30%;
+	margin-bottom: 5%;
+	padding: 30px 0;
+	text-align: center;
+	font-size: 7em;
+	cursor: pointer;
+	background-color: #ddd;
+	color: #fff;	
+	float: left;
+	border-radius: 5px;
+	height: 1em;
+	text-shadow: 2px 2px 10px rgba(0,0,0,.4);
+}
+[class*="-active"]{
+	-webkit-transform-origin:center center -100px;
+	-webkit-transform:perspective(200px) rotate3D(0,1,0,0deg) translate3D(0,0,-100px);
+	-webkit-transition:opacity .5s .1s,-webkit-transform .3s cubic-bezier(.5,1.5,.5,1.5),margin-top .3s cubic-bezier(.5,1.5,.5,1.5), left 0s 0s;
+
+	transform-origin:center center -100px;
+	transform:perspective(200px) rotate3D(0,1,0,0deg) translate3D(0,0,-100px);
+	transition:opacity .5s .1s,transform .3s cubic-bezier(.5,1.5,.5,1.5),margin-top .3s cubic-bezier(.5,1.5,.5,1.5), left 0s 0s;
+}
+.x-active{
+	background-color: #C51162;
+}
+.o-active{
+	background-color: #E91E63;
+}
+.item:nth-child(3n+2) {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.header{
+	text-align: center;
+	font-size: 1.5em;
+	line-height: 1.5em;
+	padding: 5px 0;
+	clear: both;
+	overflow: hidden;
+}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}

@@ -143,7 +143,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="order-wrap mdl-grid ">	
+		<div class="order-wrap mdl-grid">	
 			<table class="mdl-cell mdl-cell--12-col mdl-card">
 				<thead>
 					<tr class="mdl-grid">
@@ -151,21 +151,17 @@
 						
 						<td class="mdl-cell--1-col">訂票金額 
 						</td>
-
 						<td class="mdl-cell--2-col">訂票人 
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-name' || sortType != 'name'" ng-click="sortType='name'"><i class="material-icons">arrow_drop_down</i></button>
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == 'name'" ng-click="sortType='-name'"><i class="material-icons">arrow_drop_up</i></button>
-						</td>
 
 						<td class="mdl-cell--1-col">數量
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-number' || sortType != 'number'" ng-click="sortType='number'"><i class="material-icons">arrow_drop_down</i></button>
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='number'" ng-click="sortType='-number'"><i class="material-icons">arrow_drop_up</i></button>
 						</td>
-
 						<td class="mdl-cell--3-col">位置 
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='place'" ng-show="sortType == '' ||  sortType == '-place' || sortType != 'place'"><i class="material-icons">arrow_drop_down</i></button>
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType=='place'" ng-click="sortType='-place'"><i class="material-icons">arrow_drop_up</i></button>
-						</td>
 
 						<td class="mdl-cell--2-col">訂票時間 
 						<button class="mdl-button mdl-js-button mdl-button--icon" ng-click="sortType='time'" ng-show="sortType == '' ||  sortType == '-time' || sortType != 'time'"><i class="material-icons">arrow_drop_down</i>
@@ -198,7 +194,6 @@
 								Done
 							</div>
 						</td>
-
 						<td class="mdl-cell--1-col"><span>{{230*order.number | currency:"NT$":0 }}</span>
 						</td>
 

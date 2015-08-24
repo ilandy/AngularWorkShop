@@ -1,0 +1,7 @@
+<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == '' ||  sortType == '-'+sortBy || sortType != sortBy" ng-click="sortType=sortBy">
+	<i class="material-icons">arrow_drop_down</i>
+</button>
+<button class="mdl-button mdl-js-button mdl-button--icon" ng-show="sortType == sortBy" ng-click="sortType='-'+sortBy">
+	<i class="material-icons">arrow_drop_up</i>
+</button>
+{{sortType}}
