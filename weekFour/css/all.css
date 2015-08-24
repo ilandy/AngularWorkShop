@@ -20,7 +20,6 @@
 	-webkit-transform-origin:center center -100px;
 	-webkit-transform:perspective(200px) rotate3D(0,1,0,0deg) translate3D(0,0,-100px);
 	-webkit-transition:opacity .5s .1s,-webkit-transform .3s cubic-bezier(.5,1.5,.5,1.5),margin-top .3s cubic-bezier(.5,1.5,.5,1.5), left 0s 0s;
-
 	transform-origin:center center -100px;
 	transform:perspective(200px) rotate3D(0,1,0,0deg) translate3D(0,0,-100px);
 	transition:opacity .5s .1s,transform .3s cubic-bezier(.5,1.5,.5,1.5),margin-top .3s cubic-bezier(.5,1.5,.5,1.5), left 0s 0s;

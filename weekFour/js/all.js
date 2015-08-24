@@ -19,30 +19,26 @@ var OXController = function ($scope){
 		}
 	}
 	$scope.checkRow = function(){
-		var row1 = $scope.items[0]+$scope.items[1]+$scope.items[2],
-		row2 = $scope.items[3]+$scope.items[4]+$scope.items[5],
-		row3 = $scope.items[6]+$scope.items[7]+$scope.items[8],
-		col1 = $scope.items[0]+$scope.items[3]+$scope.items[6],
-		col2 = $scope.items[1]+$scope.items[4]+$scope.items[7],
-		col3 = $scope.items[2]+$scope.items[5]+$scope.items[8],
-		slash1 = $scope.items[0]+$scope.items[4]+$scope.items[8],
-		slash2 = $scope.items[2]+$scope.items[4]+$scope.items[6],
+		var row = 0,
+		col = 0,
+		slash = 0,
 		all = 0;
-		for(i=0;i<$scope.items.length;i++){
-			all=all+$scope.items[i]}
-
-		if(row1 == 3 || row2 == 3 || row3 == 3 || col1 == 3 || col2 == 3 || col3 == 3 || slash1 == 3 ||slash2 == 3)
+		for(i=0; i<$scope.items.length; i++) {all=all+$scope.items[i]}
+		for(i=0; i<$scope.items.length; i=i+3) {row = $scope.items[i]+$scope.items[i+1]+$scope.items[i+2]}
+		for(i=0; i<$scope.items.length; i++) {col = $scope.items[i]+$scope.items[i+3]+$scope.items[i+6]}
+		for(i=1; i<3; i++) {slash = $scope.items[-2*i]+$scope.items[4]+$scope.items[2*i]}
+		if(row == 3 || col == 3 || slash == 3 )
 		{
 			$scope.confirm('X贏了！要不要再來一局？');
 		}
-		else if (row1 == 0 || row2 == 0 || row3 == 0 || col1 == 0 || col2 == 0 || col3 == 0 || slash1 == 0 ||slash2 == 0)
+		else if (row == 0 || col == 0 || slash == 0 )
 		{
 			$scope.confirm('O贏了！要不要再來一局？');
 		}else if(all==4)
 		{
 			$scope.confirm('平手囉...再來一次吧？');
 		}
-
+		console.log(row);
 	}
 	
 	$scope.whoWin = function(index){
