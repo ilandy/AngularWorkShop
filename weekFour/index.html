@@ -11,7 +11,7 @@
 <body ng-app="myApp">
 	<div class="header wrap"><span class="pull-left"> 玩家1：<i class="fa fa-circle-o"></i> </span><span class="pull-right">玩家2： <i class="fa fa-times"></i> </span> </div>	
 	<div class="wrap"ng-controller="OXController">
-		<div class="item fa" ng-class="{'fa-circle-o o-active':pin==0,'fa-times x-active':pin==1}" ng-repeat="pin in items track by $index" ng-click="whoWin($index)"></div>
+		<div class="item fa" ng-class="{'fa-circle-o o-active':pin==0,'fa-times x-active':pin==1}" ng-repeat="pin in items track by $index" ng-click="pinSelected($index)"></div>
 		<!-- <pre>{{items|json}}</pre> -->
 	</div>	
 
