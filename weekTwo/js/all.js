@@ -134,4 +134,13 @@ var OrderCtrl = function ($scope, $http) {
 	}
 };
 OrderCtrl.$inject = ['$scope', '$http'];
-orderApp.controller('OrderCtrl', OrderCtrl);
+orderApp.controller('OrderCtrl', OrderCtrl)
+		.directive('sortButton', function() {
+		  return {
+		    restrict: 'E',
+		    scope: {
+		    	sortBy: '=sortType'
+		    },
+		    templateUrl: 'sortButton.html'
+		  };
+		});

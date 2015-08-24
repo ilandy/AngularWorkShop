@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS - Week Four</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/all.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+	<script src="js/all.js"></script>
+</head>
+<body ng-app="myApp">
+	<div class="header wrap"><span class="pull-left"> 玩家1：<i class="fa fa-circle-o"></i> </span><span class="pull-right">玩家2： <i class="fa fa-times"></i> </span> </div>	
+	<div class="wrap"ng-controller="OXController">
+		<div class="item fa" ng-class="{'fa-circle-o o-active':pin==0,'fa-times x-active':pin==1}" ng-repeat="pin in items track by $index" ng-click="whoWin($index)"></div>
+		<!-- <pre>{{items|json}}</pre> -->
+	</div>	
+
+</body>
+</html>
