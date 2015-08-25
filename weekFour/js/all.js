@@ -2,6 +2,7 @@ var app = angular.module('myApp', []);
 var OXController = function ($scope){
 	$scope.whoSelect = 0;
 	$scope.items = [4,4,4,4,4,4,4,4,4];
+	$scope.gameOver = 0;
 	$scope.pinIt = function (index){
 		var whoSelected = $scope.whoSelect % 2 ;
 		$scope.items[index] = whoSelected;
@@ -12,12 +13,15 @@ var OXController = function ($scope){
 		if(reload == true) {
 			window.location.reload();
 		}
+		$scope.gameOver=1;
 	} // -> 重新來一次
 	$scope.checkWin = function(row){
 		if(row.some(function (value, index, array) {return value == 0 ? true : false;}) == true){
 				$scope.confirm('玩家1獲勝!再來一場吧？');
+
 			}else if(row.some(function (value, index, array) {return value == 3 ? true : false;}) == true){
 				$scope.confirm('玩家2獲勝!再來一場吧？');
+
 			}
 	} // -> 確認比對取得數值是否為 true 
 	$scope.getWinLine = function(){
@@ -29,7 +33,7 @@ var OXController = function ($scope){
 			if(j<2){ slash[j] = parseInt($scope.items[4+(-4+j*2)]+$scope.items[4]+$scope.items[4+(4-j*2)]);}// 判斷slash
 			$scope.checkWin(whoLined[j]);
 		}
-		if(all==4){
+		if(all==4 && $scope.gameOver==0){
 			$scope.confirm('不分勝負!再來一場吧？');
 		}
 	}// -> 取得加總 行、列、斜線 全部連線值並判斷
