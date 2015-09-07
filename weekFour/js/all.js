@@ -10,7 +10,7 @@ var OXController = function ($scope){
 	$scope.confirm = function (string){
 		var reload = confirm(string);
 		if(reload == true) {
-			window.location.reload();
+			$window.location.reload();
 		}
 	} // -> 重新來一次
 	$scope.checkWin = function(row){
