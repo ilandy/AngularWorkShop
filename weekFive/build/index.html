@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>The Middleman</title>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="Content/stylesheets/all.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="Scripts/all.js"></script>
+    <script src="Scripts/ctrl.js"></script>
+  </head>
+
+  <body class="index" ng-app="myApp">
+    <div class="bg"></div>
+    
+
+	<div class="mdl-grid i-maT-2vh" ng-controller="myCtrl as m">
+		<div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--hide-tablet mdl-typography--text-right">
+			<span class="logo"></span>
+		</div>
+		<div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--hide-tablet mdl-color-text--white">
+			<p class="">工作回報系統<br>Working Hours Report</p>
+			<p>前月份工時： <span>166</span> hr <br>本月份工時： <span>166</span> hr</p>
+			<p class="i-login-info "><span>Hi ! <span ng-bind="m.name"></span> </span>&nbsp;&nbsp;&nbsp;
+			<button class="mdl-button mdl-js-button mdl-button--accent">
+		  		<i class="material-icons">power_settings_new</i>
+			</button>
+			</p>
+
+		</div>
+		<div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--hide-tablet mdl-color-text--white">
+			
+		</div>
+		<div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone i-bgc--w">
+		   <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+			  <div class="mdl-tabs__tab-bar">
+			    <a href="#about-panel" class="mdl-tabs__tab is-active">新增工作日誌</a>
+			    <a href="#members-panel" class="mdl-tabs__tab">我的工作日誌</a>
+			    
+			    <a href="#albums-panel" class="mdl-tabs__tab">專案設定</a>
+			    
+			  </div>
+
+			  <div class="mdl-tabs__panel is-active" id="about-panel">
+    <form action="#">
+    <div class="mdl-grid">
+    <!-- 表頭 -->
+	  <div class="mdl-cell mdl-cell--6-col">
+	  	  <label class="mdl-button mdl-js-button mdl-button--icon" for="dp1">
+	      	<i class="material-icons">today</i>
+	      </label>
+		  <div class="mdl-textfield mdl-js-textfield">
+		    <input class="mdl-textfield__input" type="date" id="dp1" ng-model="m.today"/>
+		    <label class="mdl-textfield__label" for="dp1"></label>
+		  </div>
+	  </div>
+
+	   <div class="mdl-cell mdl-cell--4-col">
+		  <h3 class="mdl-typography--text-right"><small>工時總計</small> <span ng-bind="m.totalHours"></span> <small>hr</small></h3>
+	  </div>
+	  <div class="mdl-cell mdl-cell--2-col">
+		<h3><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="m.sendWork()" type="button"><i class="material-icons">flight_takeoff</i>&nbsp;&nbsp;Send&nbsp;!&nbsp;</button></h3>
+	  </div>
+	
+	 </div>
+	 <!-- 表單內容 -->
+	 <div class="i-list-header mdl-grid">
+	  	<div class="mdl-cell mdl-cell--1-col mdl-typography--text-center">
+			#
+	  	</div>
+	  	<div class="mdl-cell mdl-cell--2-col">
+			專案
+	  	</div>
+	  	<div class="mdl-cell mdl-cell--2-col mdl-typography--text-center">
+			工時
+	  	</div>
+	  	<div class="mdl-cell mdl-cell--7-col">
+			工作說明
+	  	</div>
+	 </div>
+	
+	 
+<div class="i-list-item mdl-grid" ng-repeat="work in m.works">
+  	<div class="mdl-cell mdl-cell--1-col mdl-typography--text-center">
+		<span ng-bind="$index+1"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--2-col">
+  		<div class="i-select">
+			<select class="mdl-textfield__input i-textfield__defH i-field__focus" name="prS1" id="prS1" ng-model="work.wName" ng-options="pjt.pName for pjt in m.project"
+			>
+				
+			</select>
+			<label class="i-select-arrow" for="prS1"><i class='material-icons'>&#xE313;</i></label>
+		</div>
+  	</div>
+  	<div class="mdl-cell mdl-cell--2-col mdl-typography--text-center">
+  		<button class="mdl-button mdl-js-button mdl-button--icon" type="button" ng-click="m.addHours(work,
+	  	-1);m.getSumHours()">
+		  <i class="material-icons">remove</i>
+		</button>
+	  	<input class="i-field i-field__focus" type="number" ng-model="work.wHours" min="0" ng-change="m.getSumHours()">
+	  	<button class="mdl-button mdl-js-button mdl-button--icon" type="button" ng-click="m.addHours(work,
+	  	+1);m.getSumHours()">
+		  <i class="material-icons">add</i>
+		</button>
+  	</div>
+  	<div class="mdl-cell mdl-cell--6-col">
+		   <textarea class="mdl-textfield__input i-textarea i-field__focus" type="text" rows= "1" id="ta1" placeholder="工作說明" ng-model="work.wDiscript"></textarea>
+  	</div>
+  	<div class="mdl-cell mdl-cell--1-col">
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" type="button" ng-click="m.addWork($index)" ng-if="$last">
+		  <i class="material-icons">add</i>
+		</button>
+  	</div>
+ </div>
+ 
+<pre ng-if="m.debug">
+	<!-- {{m.receivers | json}} -->
+	{{m.works | json}}
+</pre>
+ <div class="mdl-grid">
+ 	<div class="mdl-cell mdl-cell--12-col">
+		<label for="ps">備註</label>
+		<textarea name="" id="ps" rows="1" ng-model="m.todayWork.workPS" class="mdl-textfield__input i-textarea i-field__focus"></textarea>
+	</div>
+</div>
+
+	<div class="mdl-grid">
+		<h5 class="mdl-cell mdl-cell--12-col">&nbsp;工作日誌收件者&nbsp;&nbsp;
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+		    <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+		      <i class="material-icons">search</i>
+		    </label>
+		    <div class="mdl-textfield__expandable-holder">
+		      <input class="mdl-textfield__input" type="text" id="sample6" ng-model="m.searchPeople"/>
+		      <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+		    </div>
+		  </div>
+		 </h5>
+
+		<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-cell mdl-cell--3-col" for="checkbox-{{$index}}" ng-repeat="rcvr in m.receivers | filter:m.searchPeople">
+		  <input type="checkbox" id="checkbox-{{$index}}" class="mdl-checkbox__input" ng-model="rcvr.isSend" ng-checked="rcvr.isSend" ng-change="m.getSendWho(rcvr)"/>
+		  <span class="mdl-checkbox__label" ng-bind="rcvr.rName"> </span>
+		</label>
+	</div>
+	 
+
+	 <!-- 表單內容 -->
+
+	</form>
+
+</div>
+
+			  <div class="mdl-tabs__panel" id="members-panel">
+	<div class="i-list-item mdl-grid">
+    <div class="mdl-cell mdl-cell--1-col mdl-typography--text-center">
+      日期
+    </div>
+    <div class="mdl-cell mdl-cell--2-col mdl-typography--text-center">
+      專案
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      工時
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+      MEMO
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+       備註
+    </div>
+  </div>
+<div class="i-list-item" ng-repeat="wList in m.allWork|orderBy:'wList.today'">
+  <div class="i-day-item mdl-grid" ng-repeat="dayWork in wList.workList">
+  	<div class="mdl-cell mdl-cell--1-col mdl-typography--text-center">
+		  <span ng-bind="wList.today | date:'yyyy/MM/dd'" ng-if="$first"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--2-col mdl-typography--text-center">
+		  <span ng-bind="dayWork.wName.pName"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--1-col">
+      <span ng-bind="dayWork.wHours"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--4-col">
+      <p ng-bind="dayWork.wDiscript"></p>
+  	</div>
+  	<div class="mdl-cell mdl-cell--4-col">
+	     <p ng-bind="wList.workPS"></p>
+  	</div>
+  </div>
+ </div>
+</div>
+
+			  <div class="mdl-tabs__panel" id="albums-panel">
+    <div class="mdl-grid">
+      <p class="mdl-cell mdl-cell--12-col">
+        各位同仁大家好：<br>
+        為了讓大家能夠即時更新執行專案的狀態，提供讓大家自行設定工作日誌專案的功能 <br>
+        如果各位在填寫時有遇到什麼問題，或是專案未在列表中請來信告知，謝謝！！<br>
+      </p>
+      <h4 class="mdl-cell mdl-cell--12-col">常用專案</h4>
+
+      <div class="mdl-cell mdl-cell--3-col" ng-repeat="myPjt in m.project" ng-if="myPjt.isMy">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect i-checkbox-defH" for="checkbox-project-{{$index}}">
+          <input type="checkbox" id="checkbox-project-{{$index}}" class="mdl-checkbox__input" checked disabled/>
+          <span class="mdl-checkbox__label"> {{myPjt.pName}}<br>負責人：{{myPjt.pOwner}} </span>
+        </label>
+      </div>
+
+      <h4 class="mdl-cell mdl-cell--12-col">其他專案</h4>
+      
+      
+      <div class="mdl-cell mdl-cell--3-col" ng-repeat="Pjt in m.project" ng-if="!Pjt.isMy">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect i-checkbox-defH" for="checkbox-project-{{$index}}">
+          <input type="checkbox" id="checkbox-project-{{$index}}" class="mdl-checkbox__input" ng-model="Pjt.isMy"/>
+          <span class="mdl-checkbox__label"> {{Pjt.pName}}<br>負責人：{{Pjt.pOwner}} </span>
+        </label>
+      </div>
+      
+    </div>
+</div>
+			  
+			</div>
+		</div>
+	</div>
+
+<!-- <div class="welcome">
+  <h1>Middleman is Watching</h1>
+  <p class="doc">
+    <a href="http://middlemanapp.com/">Read Online Documentation</a>
+  </p>
+</div> -->
+  </body>
+</html>
