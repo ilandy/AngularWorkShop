@@ -50,3 +50,11 @@ Mission List
   * 完成一個井字遊戲
 
 <a href="http://ilandy.github.io/AngularWorkShop/weekFour/" target="_blank">Week 4 - 成果Demo</a>
+
+---
+
+###Week5 -- 工作日誌
+Mission List
+  * 製作常用的表單 - 淺嚐 Directive 
+
+<a href="http://ilandy.github.io/AngularWorkShop/weekFive/build/" target="_blank">Week 4 - 成果Demo</a>
