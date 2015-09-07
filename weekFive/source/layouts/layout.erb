@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
 
@@ -19,8 +19,8 @@
     <script src="Scripts/ctrl.js"></script>
   </head>
 
-  <body class="<%= page_classes %>" ng-app="myApp">
-    <div class="bg"></div>
+  <body class="<%= page_classes %>" ng-controller="myCtrl as m">
+    <div class="bg-{{m.week}}"></div>
     <%= yield %>
   </body>
 </html>

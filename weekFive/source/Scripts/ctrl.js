@@ -9,6 +9,7 @@
 
 		var vm = this;
 		vm.today = new Date();
+		vm.week = vm.today.getDay();
 		vm.workPS = 0;
 		vm.totalHours = 0;
 		vm.debug = false;

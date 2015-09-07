@@ -1,12 +1,17 @@
-.bg
+%bg
   position: fixed
   top: 0
   left: 0
   width: 110vw
   height: 110vh
-  background: image-url('01-moon.jpg') center no-repeat
+  background: center top no-repeat
   background-size: 100% auto
   z-index: -1
+
+@for $i from 0 through 6
+  .bg-#{$i}
+    @extend %bg
+    background-image: image-url('0#{$i}.jpg') 
 
 .i-maT-2vh
   margin-top: 2vh

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
 
@@ -19,11 +19,11 @@
     <script src="Scripts/ctrl.js"></script>
   </head>
 
-  <body class="index" ng-app="myApp">
-    <div class="bg"></div>
+  <body class="index" ng-controller="myCtrl as m">
+    <div class="bg-{{m.week}}"></div>
     
 
-	<div class="mdl-grid i-maT-2vh" ng-controller="myCtrl as m">
+	<div class="mdl-grid i-maT-2vh">
 		<div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--hide-tablet mdl-typography--text-right">
 			<span class="logo"></span>
 		</div>
