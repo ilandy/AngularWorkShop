@@ -1,0 +1,45 @@
+
+
+	<div class="mdl-grid i-maT-2vh" ng-controller="myCtrl as m">
+		<div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--hide-tablet mdl-typography--text-right">
+			<span class="logo"></span>
+		</div>
+		<div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--hide-tablet mdl-color-text--white">
+			<p class="">工作回報系統<br>Working Hours Report</p>
+			<p>前月份工時： <span>166</span> hr <br>本月份工時： <span>166</span> hr</p>
+			<p class="i-login-info "><span>Hi ! <span ng-bind="m.name"></span> </span>&nbsp;&nbsp;&nbsp;
+			<button class="mdl-button mdl-js-button mdl-button--accent">
+		  		<i class="material-icons">power_settings_new</i>
+			</button>
+			</p>
+
+		</div>
+		<div class="mdl-cell mdl-cell--1-col-desktop mdl-cell--hide-tablet mdl-color-text--white">
+			
+		</div>
+		<div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone i-bgc--w">
+		   <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+			  <div class="mdl-tabs__tab-bar">
+			    <a href="#about-panel" class="mdl-tabs__tab is-active">新增工作日誌</a>
+			    <a href="#members-panel" class="mdl-tabs__tab">我的工作日誌</a>
+			    
+			    <a href="#albums-panel" class="mdl-tabs__tab">專案設定</a>
+			    
+			  </div>
+
+			  <%= partial "partials/_addWork.html.erb"%>
+
+			  <%= partial "partials/_listWork.html.erb"%>
+
+			  <%= partial "partials/_projectSetting.html.erb"%>
+			  
+			</div>
+		</div>
+	</div>
+
+<!-- <div class="welcome">
+  <h1>Middleman is Watching</h1>
+  <p class="doc">
+    <%= link_to "Read Online Documentation", "http://middlemanapp.com/" %>
+  </p>
+</div> -->

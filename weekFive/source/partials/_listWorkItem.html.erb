@@ -1,0 +1,36 @@
+<div class="i-list-item mdl-grid">
+    <div class="mdl-cell mdl-cell--1-col mdl-typography--text-center">
+      日期
+    </div>
+    <div class="mdl-cell mdl-cell--2-col mdl-typography--text-center">
+      專案
+    </div>
+    <div class="mdl-cell mdl-cell--1-col">
+      工時
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+      MEMO
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+       備註
+    </div>
+  </div>
+<div class="i-list-item" ng-repeat="wList in m.allWork|orderBy:'wList.today'">
+  <div class="i-day-item mdl-grid" ng-repeat="dayWork in wList.workList">
+  	<div class="mdl-cell mdl-cell--1-col mdl-typography--text-center">
+		  <span ng-bind="wList.today | date:'yyyy/MM/dd'" ng-if="$first"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--2-col mdl-typography--text-center">
+		  <span ng-bind="dayWork.wName.pName"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--1-col">
+      <span ng-bind="dayWork.wHours"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--4-col">
+      <p ng-bind="dayWork.wDiscript"></p>
+  	</div>
+  	<div class="mdl-cell mdl-cell--4-col">
+	     <p ng-bind="wList.workPS"></p>
+  	</div>
+  </div>
+ </div>

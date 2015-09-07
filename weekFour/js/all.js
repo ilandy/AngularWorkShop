@@ -11,7 +11,7 @@ var OXController = function ($scope){
 	$scope.confirm = function (string){
 		var reload = confirm(string);
 		if(reload == true) {
-			window.location.reload();
+			$window.location.reload();
 		}
 		$scope.gameOver=1;
 	} // -> 重新來一次

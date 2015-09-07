@@ -1,0 +1,45 @@
+
+<div class="i-list-item mdl-grid" ng-repeat="work in m.works">
+  	<div class="mdl-cell mdl-cell--1-col mdl-typography--text-center">
+		<span ng-bind="$index+1"></span>
+  	</div>
+  	<div class="mdl-cell mdl-cell--2-col">
+  		<div class="i-select">
+			<select class="mdl-textfield__input i-textfield__defH i-field__focus" name="prS1" id="prS1" ng-model="work.wName" ng-options="pjt.pName for pjt in m.project"
+			>
+				
+			</select>
+			<label class="i-select-arrow" for="prS1"><i class='material-icons'>&#xE313;</i></label>
+		</div>
+  	</div>
+  	<div class="mdl-cell mdl-cell--2-col mdl-typography--text-center">
+  		<button class="mdl-button mdl-js-button mdl-button--icon" type="button" ng-click="m.addHours(work,
+	  	-1);m.getSumHours()">
+		  <i class="material-icons">remove</i>
+		</button>
+	  	<input class="i-field i-field__focus" type="number" ng-model="work.wHours" min="0" ng-change="m.getSumHours()">
+	  	<button class="mdl-button mdl-js-button mdl-button--icon" type="button" ng-click="m.addHours(work,
+	  	+1);m.getSumHours()">
+		  <i class="material-icons">add</i>
+		</button>
+  	</div>
+  	<div class="mdl-cell mdl-cell--6-col">
+		   <textarea class="mdl-textfield__input i-textarea i-field__focus" type="text" rows= "1" id="ta1" placeholder="工作說明" ng-model="work.wDiscript"></textarea>
+  	</div>
+  	<div class="mdl-cell mdl-cell--1-col">
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" type="button" ng-click="m.addWork($index)" ng-if="$last">
+		  <i class="material-icons">add</i>
+		</button>
+  	</div>
+ </div>
+ 
+<pre ng-if="m.debug">
+	<!-- {{m.receivers | json}} -->
+	{{m.works | json}}
+</pre>
+ <div class="mdl-grid">
+ 	<div class="mdl-cell mdl-cell--12-col">
+		<label for="ps">備註</label>
+		<textarea name="" id="ps" rows="1" ng-model="m.todayWork.workPS" class="mdl-textfield__input i-textarea i-field__focus"></textarea>
+	</div>
+</div>
