@@ -1,0 +1,170 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* reset */
+
+body {
+    font-size: 16px;
+    background: rgba(230,249,250,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(230,249,250,1) 0%, rgba(230,249,250,1) 16%, rgba(116,215,219,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(230,249,250,1)), color-stop(16%, rgba(230,249,250,1)), color-stop(100%, rgba(116,215,219,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(230,249,250,1) 0%, rgba(230,249,250,1) 16%, rgba(116,215,219,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(230,249,250,1) 0%, rgba(230,249,250,1) 16%, rgba(116,215,219,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(230,249,250,1) 0%, rgba(230,249,250,1) 16%, rgba(116,215,219,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(230,249,250,1) 0%, rgba(230,249,250,1) 16%, rgba(116,215,219,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f9fa', endColorstr='#74d7db', GradientType=1 );
+}
+.calculator {
+    position: relative;
+    top: 70px;
+    background-color: #efefef;
+    width: 23em;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 3px;
+}
+input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 2em;
+    padding: 1rem;
+    border: none;
+    font-family: Arial;
+    font-size: 3em;
+    text-align: right;
+    background: transparent;
+    color: rgba(100,100,100,1);
+
+}
+input:focus {
+    outline: none;
+}
+.input-group {
+    position: relative;
+}
+.single {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    width: 1.75rem;
+    height: 1.5rem;
+    line-height: 1.4rem;
+    background: #dfdfdf;
+    border-radius: 10%;
+}
+.single:before {
+    content: attr(data-text);
+    padding-left: 5px; 
+    color: #efefef;
+    font-weight: 900;
+}
+.single:after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.75rem 0 0.75rem 0.65rem;
+    border-color: transparent transparent transparent #ddd;
+    
+}
+#txtResult {
+    padding-top: 2rem;
+    font-size: .85em;
+}
+#txtInput {
+    
+}
+button {
+        display: inline-block;
+        width: 25%;
+        height: 10%;
+        padding: .8em 0;
+        cursor: pointer;
+}
+button:last-child {
+    width: 100%;
+}
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 24pt;
+    border-color: hsl(255, 100%, 100%);
+    border: none;
+    box-shadow: -1px -1px 0 rgba(255,255,255,.04);
+    transition: background-color .3s;
+}
+button:focus{
+    outline: none;
+    
+}
+.operand {
+    background-color: hsl(226, 79%, 69%);
+    color: rgba(255,255,255,.6);
+    
+}
+.operand:hover {
+    background-color: hsl(226, 79%, 79%);    
+}
+.operator {
+    background-color: hsl(226, 17%, 34%);
+    color: rgba(255,255,255,.8);
+      
+}
+.operator:hover {
+    background-color: hsl(226, 17%, 24%);    
+}
+.clean {
+    background-color: hsl(221, 19%, 29%);  
+    color: rgba(255,255,255,.6);
+}
+.clean:hover {
+    background-color: hsl(221, 19%, 19%);   
+}
