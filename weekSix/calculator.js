@@ -15,6 +15,9 @@ function initialize() {
             .addEventListener('click', clearEntry, false);
     document.getElementById('btnClear')
             .addEventListener('click', clear, false);
+    
+    document.getElementById('backSpace')
+            .addEventListener('click', backSpaceClick, false);
     clear();
 }
 function numberClick() {
@@ -34,4 +37,7 @@ function clearEntry() {
 function clear() {
     txtInput.value = '0';
     txtResult.value = '0';
+}
+function backSpaceClick() {
+        txtInput.value = Number(txtInput.value.slice(0,-1));
 }

@@ -89,7 +89,7 @@ input:focus {
 }
 .single {
     position: absolute;
-    bottom: 1.5rem;
+    top: 2rem;
     left: 1.5rem;
     width: 1.75rem;
     height: 1.5rem;
@@ -116,11 +116,11 @@ input:focus {
     
 }
 #txtResult {
-    padding-top: 2rem;
+    padding-bottom: 2rem;
     font-size: .85em;
 }
-#txtInput {
-    
+#txtInput[value="0"] {
+    opacity: 0;
 }
 button {
         display: inline-block;
@@ -129,8 +129,8 @@ button {
         padding: .8em 0;
         cursor: pointer;
 }
-button:last-child {
-    width: 100%;
+button:nth-last-child(2) {
+    width: 75%;
 }
 button {
     font-family: Arial, Helvetica, sans-serif;
