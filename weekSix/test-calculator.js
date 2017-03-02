@@ -29,15 +29,14 @@ QUnit.test("Button Click Test", function (assert) {
 QUnit.test("Add Test", function (assert) {
     assert.expect(2);
     txtInput.value = '10';
-    txtResult.value = '20';
-    var btnPlus = document.getElementById('btnPlus');
+    txtResult.value = '10';
     btnPlus.click();
-    var expected = '30';
+    var expected = '20';
     assert.equal(txtResult.value, expected, 'Expected value: ' + expected +
        '  Actual value: ' + txtResult.value);
     expected = '0';
     assert.equal(txtInput.value, expected, 'Expected value: ' + expected +
-            '  Actual value: ' + txtInput.value);
+    '  Actual value: ' + txtInput.value);
 });
 
 QUnit.test("Subtract Test", function (assert) {
@@ -74,12 +73,19 @@ QUnit.test("Clear Test", function (assert) {
 });
 QUnit.test("Initialize Test", function (assert) {
     assert.expect(2);
-    txtInput.value = '';
-    txtResult.value = '';
+    // txtInput.value = '';
+    // txtResult.value = '';
     var expected = '0';
-    initialize();
     assert.equal(txtInput.value, expected, 'Expected value: ' + expected +
          '  Actual value: ' + txtInput.value);
     assert.equal(txtResult.value, expected, 'Expected value: ' + expected +
          '  Actual value: ' + txtResult.value);
+});
+QUnit.test("Back Space Test", function (assert) {
+    assert.expect(1);
+    txtInput.value = '1000';
+    backSpace.click();
+    var expected = '100';
+    assert.equal(txtInput.value, expected, 'Expected value: ' + expected +
+         '  Actual value: ' + txtInput.value);
 });
