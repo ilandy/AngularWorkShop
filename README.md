@@ -66,5 +66,5 @@ Mission List
   * TDD - 使用 QUnit 練習 TDD 設計模式
   * 使用基本 CSS 與 HTML 設計計算機的樣式
   
-<a href="http://ilandy.github.io/WYTCWorkShop/weekSix/index.html/" target="_blank">Week 6 - 成果Demo </a><br/>
-<a href="http://ilandy.github.io/WYTCWorkShop/weekSix/test.html/" target="_blank">Week 6 - QUnit 測試結果 </a>
+<a href="http://ilandy.github.io/WYTCWorkShop/weekSix/index.html" target="_blank">Week 6 - 成果Demo </a><br/>
+<a href="http://ilandy.github.io/WYTCWorkShop/weekSix/test.html" target="_blank">Week 6 - QUnit 測試結果 </a>
