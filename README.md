@@ -1,4 +1,4 @@
-# WYCT AngularWorkShop
+# WYCT F2E Training WorkShop
 
 ###Week 1 -- Album
 Mission List
@@ -41,7 +41,7 @@ Description
   * 使用 angular UI - sortable
   * 欄位驗證
 
-<a href="http://ilandy.github.io/AngularWorkShop/weekTwo/" target="_blank">Week 2-3 - 成果Demo</a>
+<a href="http://ilandy.github.io/WYTCWorkShop/weekTwo/" target="_blank">Week 2-3 - 成果Demo</a>
 
 ---
 
@@ -49,7 +49,7 @@ Description
 Mission List
   * 完成一個井字遊戲
 
-<a href="http://ilandy.github.io/AngularWorkShop/weekFour/" target="_blank">Week 4 - 成果Demo</a>
+<a href="http://ilandy.github.io/WYTCWorkShop/weekFour/" target="_blank">Week 4 - 成果Demo</a>
 
 ---
 
@@ -57,4 +57,14 @@ Mission List
 Mission List
   * 製作常用的表單 - 淺嚐 Directive 
 
-<a href="http://ilandy.github.io/AngularWorkShop/weekFive/build/" target="_blank">Week 5 - 成果Demo</a>
+<a href="http://ilandy.github.io/WYTCWorkShop/weekFive/build/" target="_blank">Week 5 - 成果Demo</a>
+
+---
+
+###Week6 -- 70-480 Training Guid Chapter 3,4 Home Work
+Mission List
+  * TDD - 使用 QUnit 練習 TDD 設計模式
+  * 使用基本 CSS 與 HTML 設計計算機的樣式
+  
+<a href="http://ilandy.github.io/WYTCWorkShop/weekSix/index.html/" target="_blank">Week 6 - 成果Demo </a><br/>
+<a href="http://ilandy.github.io/WYTCWorkShop/weekSix/test.html/" target="_blank">Week 6 - QUnit 測試結果 </a>
