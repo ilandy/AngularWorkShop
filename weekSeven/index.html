@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+</head>
+<body>
+    <form id="myForm">
+        Favorite Car:
+<select name="favoriteCar">
+            <option>Ford Fiesta</option>
+            <option value="Chevy">Chevrolet</option>
+            <option>BMW</option>
+        </select><br />
+        Comment:
+        <input type="text" name="comment" />
+</form>
+    <button id="myButton">Click Me</button>
+    <script>
+        $(document).ready(function () {
+            var a = "favoriteCar=Ford+Fiesta&comment=This+is+Bob%27s+car%21";
+            var b = "This is Bob's car!";
+            var endata = b.serialize();
+            var data = decodeURIComponent(a);
+            console.log(endata);
+            console.log(data);
+            
+          $('#myButton').on('click', submitTheForm);
+
+});
+      function submitTheForm() {
+          $('#myForm').submit();
+          
+}
+    </script>
+</body>
+</html>
