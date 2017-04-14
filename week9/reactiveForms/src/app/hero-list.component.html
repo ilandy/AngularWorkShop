@@ -1,0 +1,8 @@
+
+<h2> Select Hero</h2>
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary" *ngFor="let hero of heroes | async">
+    <input type="checkbox" autocomplete="off" (click)="select(hero)"> {{hero.name}}
+  </label>
+</div>
+<hero-detail [hero]="selectedHero"></hero-detail>

@@ -1,0 +1,49 @@
+<h1>
+  {{"Form Work!"}}
+</h1>
+<form [formGroup]="myForm" action="">
+
+
+<div>
+  <h3>身份</h3>
+  <ul>
+    <li *ngFor="let role of roles;let i = index">
+      <input formControlName="roleDef" type="radio" [value]="role.id" id="role{{i}}"> <label for="role{{i}}">{{role.name}}</label>
+    </li>
+  </ul>
+  <hr>
+  <h3>陳情區域</h3>
+  <ul>
+    <li *ngFor="let area of areas;let i = index">
+      <input formControlName="areaDef" type="radio" [value]="area.id" id="area{{i}}"> <label for="area{{i}}">{{area.name}}</label>
+    </li>
+  </ul>
+  <hr>
+  <h3>地址</h3>
+  <input formControlName="addrDef" type="text">
+  <hr>
+  <h3>姓名</h3>
+  <input formControlName="nameDef" type="text">
+  <hr>
+  <h3>聯絡方式</h3>
+  <ul>
+    <li *ngFor="let con of contact;let i = index">
+      <input formControlName="conDef" type="radio" [value]="con.id" id="con{{i}}" (click)="optionRq=con.options"> <label for="con{{i}}">{{con.name}}</label>
+    </li>
+  </ul>
+  <hr>
+  <h3>Email</h3>
+  <input formControlName="emailDef" type="email" placeholder="請輸入 Email"> <span *ngIf="optionRq==''">必填</span>
+  <hr>
+  <h3>phone</h3>
+  <input formControlName="telDef" type="tel" placeholder="請輸入 phone"> <span *ngIf="optionRq=='phone'">必填</span>
+  <hr>
+  <h3>書面寄送地址</h3>
+  <input formControlName="addressDef" type="text" name="address" placeholder="請輸入 address"> <span *ngIf="optionRq=='address'">必填</span>
+</div>
+<button (click)="see(myForm)">查看</button>
+
+<pre>
+{{myForm.value | json}}
+</pre>
+</form>
