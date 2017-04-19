@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,25 +8,24 @@ import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 export class AppComponent implements OnInit{
   title = 'app works!';
   model: any;
-  myForm: FormGroup;
+
   see (f:any) {
     console.log(f);
   }
 
-  constructor (private fb:FormBuilder){
-
-
-    this.myForm = this.fb.group({
-        roleDef: 3,
-        areaDef: 1,
-        addrDef: "milkshop",
-        nameDef: "iandy",
-        emailDef: "iandy",
-        telDef: "0956789000",
-        addressDef: "0956789000",
-        conDef: 1,
-        optionRq: ""
-    });
+  roleDef: number;
+  areaDef: number;
+  addrDef: string;
+  nameDef: string;
+  conDef: number;
+  optionRq: string;
+  constructor (){
+    this.roleDef = 1;
+    this.areaDef = 1;
+    this.addrDef = "milkshop";
+    this.nameDef = "iandy";
+    this.conDef = 1;
+    this.optionRq = "";
   }
 
   ngOnInit (){
